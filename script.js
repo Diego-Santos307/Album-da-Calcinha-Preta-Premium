@@ -4,4 +4,62 @@ const song = document.getElementById('audio');
 const play = document.getElementById('play');
 const cover = document.getElementById('cover');
 
-const Playlist = [AEncruzilhada, AdãoeEva, AgoraEstouSofrendo, AindaTeAmo, Amanhecer, AmordaMinhaVida, Armadilha, BabyDoll, BandidodoAmor, DeclaraçãodeAmor, ÉLindaNossaHistória, FaçoChover, Longe, Mágica, MorrendodeDesejo, PorAmor, Refém-Cobertor, Saideira-EmMilPedaços, TemMaisAlguém, VerdadeiroAmor]
+let isPlaying = false;
+let index = 0;
+
+// Estrutura centralizada e reutilizável da playlist
+const Playlist = [
+    { songName: "Amanhecer", artist: "Calcinha Preta", File: 'Amanhecer' },
+    { songName: "Longe", artist: "Calcinha Preta", File: 'Longe' },
+    { songName: "Tem Mais Alguém", artist: "Calcinha Preta", File: 'Tem Mais Alguém' },
+    { songName: "Baby Doll", artist: "Calcinha Preta", File: 'Baby Doll' },
+    { songName: "Faço Chover", artist: "Calcinha Preta", File: 'Faço Chover' },
+    { songName: "Agora Estou Sofrendo", artist: "Calcinha Preta", File: 'Agora Estou Sofrendo' },
+    { songName: "Bandido do Amor", artist: "Calcinha Preta", File: 'Bandido do Amor' },
+    { songName: "Saideira Em Mil Pedaços", artist: "Calcinha Preta", File: 'Saideira - Em Mil Pedaços' },
+    { songName: "Armadilha", artist: "Calcinha Preta", File: 'Armadilha' },
+    { songName: "Morrendo de Desejo", artist: "Calcinha Preta", File: 'Morrendo de Desejo' },
+    { songName: "Adão e Eva Romeu e Julieta", artist: "Calcinha Preta", File: 'Adão e Eva Romeu e Julieta' },
+    { songName: "Mágica", artist: "Calcinha Preta", File: 'Mágica' },
+    { songName: "Por Amor", artist: "Calcinha Preta", File: 'Por Amor' },
+    { songName: "A Encruzilhada", artist: "Calcinha Preta", File: 'A Encruzilhada' },
+    { songName: "Refém Cobertor", artist: "Calcinha Preta", File: 'Refém - Cobertor' },
+    { songName: "Declaração de Amor", artist: "Calcinha Preta", File: 'Declaração de Amor' },
+    { songName: "Ainda Te Amo", artist: "Calcinha Preta", File: 'Ainda Te Amo' },
+    { songName: "Amor da Minha Vida", artist: "Calcinha Preta", File: 'Amor da Minha Vida' },
+    { songName: "Verdadeiro Amor", artist: "Calcinha Preta", File: 'Verdadeiro Amor' },
+    { songName: "É Linda Nossa História", artist: "Calcinha Preta", File: 'É Linda Nossa História' }
+]
+
+function playSong() {
+    play.querySelector('.bi').classList.remove('bi-play-circle-fill');
+    play.querySelector('.bi').classList.add('bi-pause-circle-fill');
+    song.play();
+    isPlaying = true;
+}
+
+function pauseSong() {
+    play.querySelector('.bi').classList.add('bi-play-circle-fill');
+    play.querySelector('.bi').classList.remove('bi-pause-circle-fill');
+    song.pause();
+    isPlaying = false;
+}
+
+function playPauseDecider(){
+    if (isPlaying === true) {
+        pauseSong();
+    } else {
+        playSong();
+    }
+}
+
+function initializeSong(){
+    cover.src = `Img/${Playlist[index].File}.jpg`;
+    song.src = `Audio/${Playlist[index].File}.mp3`;
+    songName.innerText = Playlist[index].songName;
+    bandName.innerText = Playlist[index].artist;
+}
+
+initializeSong();
+
+play.addEventListener('click', playPauseDecider); 
