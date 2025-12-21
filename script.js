@@ -3,6 +3,8 @@ const bandName = document.getElementById('band-name');
 const song = document.getElementById('audio');
 const play = document.getElementById('play');
 const cover = document.getElementById('cover');
+const next = document.getElementById('next');
+const previous = document.getElementById('previous');
 
 let isPlaying = false;
 let index = 0;
@@ -53,6 +55,26 @@ function playPauseDecider(){
     }
 }
 
+function previousSong(){
+    if (index === 0) {
+        index = Playlist.length - 1;
+    } else {
+        index -= 1;
+    }
+    initializeSong();
+    playSong();
+}
+
+function nextSong(){
+    if (index === Playlist.length - 1) {
+        index = 0;
+    } else {
+        index += 1;
+    }
+    initializeSong();
+    playSong();
+}
+
 function initializeSong(){
     cover.src = `Img/${Playlist[index].File}.jpg`;
     song.src = `Audio/${Playlist[index].File}.mp3`;
@@ -63,3 +85,5 @@ function initializeSong(){
 initializeSong();
 
 play.addEventListener('click', playPauseDecider); 
+previous.addEventListener('click', previousSong);
+next.addEventListener('click', nextSong)
