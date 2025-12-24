@@ -3,7 +3,7 @@ body{
         rgb(204,35,38),
         rgb(28,17,22)
     );
-    height: 100vh;
+    height: 100dvh;
     color: white;
     font-family: sans-serif;
     display: flex;
@@ -73,8 +73,8 @@ button{
 }
 
 .progress-Container{
-    padding: 2em 0 0 0 0;
-    width: 80%;
+    padding: 3em 0 0 0 0;
+    width: 100%;
 }
 
 #progress-bar{
@@ -92,5 +92,6 @@ button{
     width: inherit;
     border-radius: inherit;
     cursor: pointer;
+    margin: 0 0 0 0;
 }
 
