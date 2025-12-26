@@ -5,6 +5,8 @@ const play = document.getElementById('play');
 const cover = document.getElementById('cover');
 const next = document.getElementById('next');
 const previous = document.getElementById('previous');
+const currestProgress = document.getElementById('currest-progress');
+const progressContainer = document.getElementById('progress-Container');
 
 let isPlaying = false;
 let index = 0;
@@ -82,8 +84,19 @@ function initializeSong(){
     bandName.innerText = Playlist[index].artist;
 }
 
+function updateProgressBar(){
+    const barWidth = (song.currentTime / song.duration) * 100;
+    currestProgress.style.setProperty('--progress', `${barWidth}%` );
+}
+
+function jumpTo(event){
+    
+}
+
 initializeSong();
 
 play.addEventListener('click', playPauseDecider); 
 previous.addEventListener('click', previousSong);
-next.addEventListener('click', nextSong)
+next.addEventListener('click', nextSong);
+song.addEventListener('timeupdate', updateProgressBar);
+progressContainer.addEventListener('click', jumpTo);
