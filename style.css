@@ -56,8 +56,8 @@ button{
 
 #band-name{
     font-size: 0.9em;
-    color: black;
-    font-weight: normal;
+    color: white;
+    font-weight: border;
 }
 
 .button{
@@ -73,8 +73,8 @@ button{
 }
 
 .progress-Container{
-    padding: 3em 0 0 0 0;
-    width: 100%;
+    padding-bottom: 1em;
+    cursor: pointer;
 }
 
 #progress-bar{
@@ -87,11 +87,11 @@ button{
 }
 
 #currest-progress{
-    background-color: rgba(0, 0, 0, 0.2);
+    --progress: 0%;
+    background-color: black;
     height: 4px;
-    width: inherit;
+    width: var(--progress);
     border-radius: inherit;
     cursor: pointer;
-    margin: 0 0 0 0;
 }
 
